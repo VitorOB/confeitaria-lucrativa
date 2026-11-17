@@ -208,3 +208,24 @@ export const footer = {
   creditLink: "Fale comigo",
   whatsappMessage: "Oi! Vi a página da Confeitaria Lucrativa e quero uma página de vendas assim.",
 };
+
+/* ───────────────────────── Conjunto completo (troca de idioma) ───────────────────────── */
+
+/** Usado pela troca de idioma (src/i18n). A versão em inglês fica em content.en.ts, com este mesmo formato. */
+export const contentPt = {
+  offer,
+  brand,
+  seo,
+  cta,
+  hero,
+  marquee,
+  forWho,
+  modules,
+  teacher,
+  testimonials,
+  offerSection,
+  faq,
+  finalCta,
+  footer,
+};
+export type Content = typeof contentPt;

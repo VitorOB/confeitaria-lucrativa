@@ -2,12 +2,15 @@ import { StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import App from "./App";
 import { brand, hero, offer, seo, teacher } from "./data/content";
+import { LanguageProvider } from "./i18n/LanguageProvider";
 
-/** Usado só no build, por scripts/prerender.mjs. */
+/** Usado só no build, por scripts/prerender.mjs. O HTML estático sai em português. */
 export function render(): string {
   return renderToString(
     <StrictMode>
-      <App />
+      <LanguageProvider initialLang="pt">
+        <App />
+      </LanguageProvider>
     </StrictMode>,
   );
 }
@@ -57,6 +60,11 @@ export function head(): string {
     `<meta name="description" content="${escapeHtml(seo.description)}" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:locale" content="pt_BR" />`,
+    `<meta property="og:locale:alternate" content="en_US" />`,
+    // Versões por idioma (o inglês é a mesma página com ?lang=en).
+    base ? `<link rel="alternate" hreflang="pt-BR" href="${base}/" />` : "",
+    base ? `<link rel="alternate" hreflang="en" href="${base}/?lang=en" />` : "",
+    base ? `<link rel="alternate" hreflang="x-default" href="${base}/" />` : "",
     `<meta property="og:site_name" content="${escapeHtml(brand.name)}" />`,
     `<meta property="og:title" content="${escapeHtml(seo.title)}" />`,
     `<meta property="og:description" content="${escapeHtml(seo.description)}" />`,
@@ -66,7 +74,6 @@ export function head(): string {
     `<meta property="og:image:height" content="630" />`,
     `<meta property="og:image:alt" content="Sua cozinha pode virar o seu negócio. Curso Confeitaria Lucrativa." />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
-    base ? `<link rel="canonical" href="${base}/" />` : "",
   ];
   return tags.filter(Boolean).join("\n    ");
 }

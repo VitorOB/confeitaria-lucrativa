@@ -1,8 +1,9 @@
-import { testimonials } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { SectionHeading } from "../components/SectionHeading";
 import { Fill } from "../components/Text";
 
 export function Testimonials() {
+  const { testimonials } = useContent().c;
   return (
     <section aria-labelledby="depoimentos-titulo" className="mx-auto max-w-[1200px] px-4 py-20 sm:px-8 lg:py-28">
       <SectionHeading id="depoimentos-titulo" eyebrow={testimonials.eyebrow} title={testimonials.title} />

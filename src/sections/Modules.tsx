@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { modules } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { Picture } from "../components/Picture";
 import { SectionHeading } from "../components/SectionHeading";
 
@@ -27,6 +27,8 @@ function useActiveModule(count: number) {
 }
 
 export function Modules() {
+  const { c, t } = useContent();
+  const { modules } = c;
   const { listRef, active } = useActiveModule(modules.items.length);
 
   return (
@@ -54,7 +56,7 @@ export function Modules() {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <p className="text-xs font-bold tracking-[0.14em] text-muted uppercase">Módulo {i + 1}</p>
+                <p className="text-xs font-bold tracking-[0.14em] text-muted uppercase">{t.module(i + 1)}</p>
                 <h3 className="mt-2 text-xl font-bold tracking-tight sm:text-2xl">{item.title}</h3>
                 <p className="mt-2 text-muted sm:text-lg">{item.text}</p>
               </div>

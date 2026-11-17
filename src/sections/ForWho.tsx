@@ -1,8 +1,9 @@
 import { Check, X } from "lucide-react";
-import { forWho } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { SectionHeading } from "../components/SectionHeading";
 
 export function ForWho() {
+  const { forWho } = useContent().c;
   return (
     <section aria-labelledby="pra-quem-titulo" className="mx-auto max-w-[1200px] px-4 py-20 sm:px-8 lg:py-28">
       <SectionHeading id="pra-quem-titulo" eyebrow={forWho.eyebrow} title={forWho.title} />

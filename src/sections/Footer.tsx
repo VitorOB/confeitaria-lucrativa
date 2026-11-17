@@ -1,15 +1,18 @@
-import { creator, footer } from "../data/content";
+import { creator } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { Fill } from "../components/Text";
 
-function whatsappLink() {
+function whatsappLink(message: string) {
   const digits = creator.whatsapp.replace(/\D/g, "");
   if (!digits) return "";
-  return `https://wa.me/${digits}?text=${encodeURIComponent(footer.whatsappMessage)}`;
+  return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
 }
 
 export function Footer() {
-  const link = whatsappLink();
-  const name = creator.name.trim() || "[NOME]";
+  const { c, t } = useContent();
+  const { footer } = c;
+  const link = whatsappLink(footer.whatsappMessage);
+  const name = creator.name.trim() || t.namePlaceholder;
   return (
     // No celular, o espaço extra no fim reserva o lugar da barra de compra fixa.
     <footer className="border-t border-line pb-[calc(88px+env(safe-area-inset-bottom))] md:pb-0">
@@ -25,7 +28,7 @@ export function Footer() {
               className="inline-flex min-h-[44px] items-center font-semibold text-pink underline underline-offset-4"
             >
               {footer.creditLink}
-              <span className="sr-only"> (abre o WhatsApp em nova aba)</span>
+              <span className="sr-only"> {t.whatsAppNote}</span>
             </a>
           ) : (
             <span className="font-semibold text-ink">

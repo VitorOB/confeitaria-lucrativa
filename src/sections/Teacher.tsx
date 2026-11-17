@@ -1,14 +1,15 @@
-import { teacher } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { Picture } from "../components/Picture";
 import { Accent, Fill } from "../components/Text";
 
 /** "Nome Sobrenome" → "Nome" + destaque em "Sobrenome". Sem nome, mostra o espaço a preencher. */
 function TeacherName() {
-  const name = teacher.name.trim();
+  const { c, t } = useContent();
+  const name = c.teacher.name.trim();
   if (!name) {
     return (
       <span className="ph">
-        [Nome da <Accent>professora</Accent>]
+        [{t.teacherPlaceholder.before} <Accent>{t.teacherPlaceholder.accent}</Accent>]
       </span>
     );
   }
@@ -24,6 +25,7 @@ function TeacherName() {
 }
 
 export function Teacher() {
+  const { teacher } = useContent().c;
   return (
     <section aria-labelledby="professora-titulo" className="mx-auto max-w-[1200px] px-4 py-20 sm:px-8 lg:py-28">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">

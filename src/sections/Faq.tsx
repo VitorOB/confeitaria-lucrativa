@@ -1,10 +1,11 @@
 import { Plus } from "lucide-react";
-import { faq } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { Picture } from "../components/Picture";
 import { SectionHeading } from "../components/SectionHeading";
 import { Fill } from "../components/Text";
 
 export function Faq() {
+  const { faq } = useContent().c;
   return (
     <section aria-labelledby="duvidas-titulo" className="mx-auto max-w-[1200px] px-4 py-20 sm:px-8 lg:py-28">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
@@ -15,8 +16,8 @@ export function Faq() {
           </div>
         </div>
         <div data-reveal-group className="border-t border-line">
-          {faq.items.map((item) => (
-            <details key={item.q} className="faq-item group border-b border-line">
+          {faq.items.map((item, i) => (
+            <details key={i} className="faq-item group border-b border-line">
               <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-6 py-6 text-lg font-bold tracking-tight sm:text-xl">
                 {item.q}
                 <span

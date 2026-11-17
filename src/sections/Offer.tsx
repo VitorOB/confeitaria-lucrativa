@@ -1,6 +1,6 @@
 import { Check, Lock } from "lucide-react";
 import { useEffect, useState } from "react";
-import { cta, offer, offerSection } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { CheckoutButton, DEMO_CHECKOUT_EVENT } from "../components/CheckoutButton";
 import { Fill, TitleText } from "../components/Text";
 
@@ -16,6 +16,8 @@ function useDemoNotice() {
 }
 
 export function Offer() {
+  const { c, t } = useContent();
+  const { cta, offer, offerSection } = c;
   const noticeCount = useDemoNotice();
 
   return (
@@ -51,7 +53,7 @@ export function Offer() {
             <Fill>{offer.installments}</Fill>
           </p>
           <p className="mt-3 text-on-paper-muted">
-            ou <Fill>{offer.cashPrice}</Fill>
+            {t.or} <Fill>{offer.cashPrice}</Fill>
           </p>
           <CheckoutButton variant="dark" shine className="mt-7 w-full">
             {cta.primary}

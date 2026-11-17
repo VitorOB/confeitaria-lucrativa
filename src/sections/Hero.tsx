@@ -1,10 +1,11 @@
 import { Play, ShieldCheck } from "lucide-react";
-import { cta, hero } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { CheckoutButton } from "../components/CheckoutButton";
 import { Picture } from "../components/Picture";
 
 /** Divide o título em palavras para a entrada palavra por palavra (CSS). */
 function HeroTitle() {
+  const { hero } = useContent().c;
   const words = hero.title.before.split(" ");
   const accentIndex = words.length;
   return (
@@ -25,10 +26,12 @@ function HeroTitle() {
 }
 
 export function Hero() {
+  const { c, t } = useContent();
+  const { cta, hero } = c;
   return (
     <section
       id="inicio"
-      aria-label="Apresentação do curso"
+      aria-label={t.heroLabel}
       className="mx-auto grid max-w-[1200px] items-center gap-12 px-4 pt-6 pb-16 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:pt-12 lg:pb-24"
     >
       <div>

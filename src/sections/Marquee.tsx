@@ -1,8 +1,9 @@
 import { Pause, Play } from "lucide-react";
 import { useState } from "react";
-import { marquee } from "../data/content";
+import { useContent } from "../i18n/lang";
 
 function Group({ copy = false }: { copy?: boolean }) {
+  const { marquee } = useContent().c;
   const List = copy ? "div" : "ul";
   const Item = copy ? "span" : "li";
   return (
@@ -22,13 +23,14 @@ function Group({ copy = false }: { copy?: boolean }) {
 }
 
 export function Marquee() {
+  const { t } = useContent();
   const [paused, setPaused] = useState(false);
   return (
     <div
       className="marquee relative border-y border-line py-5"
       data-paused={paused}
       role="region"
-      aria-label="Doces que você vai aprender"
+      aria-label={t.marqueeLabel}
     >
       <div className="marquee-mask overflow-hidden">
         <div className="marquee-track">
@@ -43,7 +45,7 @@ export function Marquee() {
         className="marquee-toggle absolute top-1/2 right-2 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-line-strong bg-bg text-muted transition-colors hover:text-pink sm:right-4"
       >
         {paused ? <Play aria-hidden="true" size={16} /> : <Pause aria-hidden="true" size={16} />}
-        <span className="sr-only">Pausar a faixa animada</span>
+        <span className="sr-only">{t.pauseMarquee}</span>
       </button>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Header } from "./components/Header";
 import { showTestimonials } from "./data/content";
+import { useContent } from "./i18n/lang";
 import { useScrollAnimations } from "./hooks/useScrollAnimations";
 import { Faq } from "./sections/Faq";
 import { FinalCta } from "./sections/FinalCta";
@@ -14,6 +15,7 @@ import { Teacher } from "./sections/Teacher";
 import { Testimonials } from "./sections/Testimonials";
 
 export default function App() {
+  const { t } = useContent();
   useScrollAnimations();
 
   return (
@@ -22,7 +24,7 @@ export default function App() {
         href="#conteudo"
         className="sr-only z-50 rounded-full bg-pink px-5 py-3 font-bold text-on-pink focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
       >
-        Pular para o conteúdo
+        {t.skipLink}
       </a>
       <Header />
       <main id="conteudo" tabIndex={-1} className="outline-none">

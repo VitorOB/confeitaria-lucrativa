@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { cta, offer } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { CheckoutButton } from "../components/CheckoutButton";
 import { Fill } from "../components/Text";
 
 /** Barra fixa só no celular: aparece depois do hero e some quando a oferta está visível. */
 export function MobileBuyBar() {
+  const { cta, offer } = useContent().c;
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

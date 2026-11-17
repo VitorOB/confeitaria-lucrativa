@@ -1,9 +1,10 @@
 import { ShieldCheck } from "lucide-react";
-import { cta, finalCta } from "../data/content";
+import { useContent } from "../i18n/lang";
 import { CheckoutButton } from "../components/CheckoutButton";
 import { TitleText } from "../components/Text";
 
 export function FinalCta() {
+  const { cta, finalCta } = useContent().c;
   return (
     <section aria-labelledby="final-titulo" className="mx-auto max-w-[1200px] px-4 py-24 text-center sm:px-8 lg:py-36">
       <h2 id="final-titulo" data-reveal className="title-xl mx-auto max-w-5xl">
