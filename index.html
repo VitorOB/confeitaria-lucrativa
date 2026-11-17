@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140D10" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>Confeitaria Lucrativa</title>
+    <!--head-->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/sora-latin-800-normal.woff2" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/hero-doces-600.webp"
+      imagesrcset="/images/hero-doces-600.webp 600w, /images/hero-doces-1200.webp 1200w"
+      imagesizes="(min-width: 600px) 520px, calc(100vw - 32px)"
+      fetchpriority="high"
+    />
+
+    <script>
+      // Marca que o JS está ativo: só então as revelações na rolagem escondem algo.
+      // Se o aplicativo não iniciar em 4 s, a marca sai e todo o conteúdo fica visível.
+      (function () {
+        var root = document.documentElement;
+        root.classList.add("js");
+        setTimeout(function () {
+          if (!window.__clReady) root.classList.remove("js");
+        }, 4000);
+      })();
+    </script>
+    <!--json-ld-->
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
