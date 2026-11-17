@@ -43,7 +43,7 @@ export const seo = {
   description:
     "Receitas testadas, preço com lucro e vendas pelo Instagram e pelo WhatsApp. Um curso online de confeitaria do zero às primeiras encomendas.",
   /** Domínio final, sem barra no fim. Usado no JSON-LD e no Open Graph. */
-  siteUrl: "",
+  siteUrl: "https://confeitaria-lucrativa-five.vercel.app",
 };
 
 /* ───────────────────────── Botões ───────────────────────── */
