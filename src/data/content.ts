@@ -25,9 +25,9 @@ export const showTestimonials = true;
 
 /** Quem criou a página (crédito do portfólio no rodapé). */
 export const creator = {
-  name: "",
+  name: "Vitor Otávio",
   /** Só números, com DDI e DDD. Ex.: "5511999998888". */
-  whatsapp: "",
+  whatsapp: "5531993628211",
 };
 
 /* ───────────────────────── Marca e SEO ───────────────────────── */
